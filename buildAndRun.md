@@ -11,7 +11,8 @@ Run:
 docker run -dp 3000:3000 <image-name>
 ```
 ```powershell
--d  => detached(background). Wont be accessible through current shell. 
+-d  => detached(background). Wont be accessible through current shell.
+-i => interactive(kind of opposite of -d) runs and opens a shell in container (closes with CONTROL + D)
 -p <client-port>:<image-port> => maps the ports to be used
 ```
 Run terminal in background container:
