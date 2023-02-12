@@ -21,18 +21,14 @@ docker volume inspect
 ## Bind Mounts
 Mount:
 ```powershell
-docker run -dp 3000:3000 -w /app --mount type=bind,src="$(pwd)",target=/app node:18-alpine sh -c "npm install && npm run dev"
+docker run /*cmds*/ --mount type=bind,src="$(pwd)/secrets",target=/env <image-name>
 ```
 Where:
 ```powershell
--w /app => sets the directory of the command
-
 --mount 
     type=bind     => bind mount
-    src="$(pwd)"  => sets source to pwd
-    target=/app   => sets mount directory in container 
-
-node:18-alpine sh -c "npm install && npm run dev" => command to be run (and shell and platform)
+    src="$(pwd)/secret"  => sets source directory (on local fs) to <pwd>/secrets
+    target=/env   => links(and creates) root/env dir in container, and links to src dir in local fs 
                   
 ```
 
