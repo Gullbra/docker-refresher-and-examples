@@ -6,10 +6,8 @@ const port: number = Number(process.env.ENV_PORT) || 3000
 
 app.use(express.json())
 
-app.route('/favicon.ico').get((res: Response) => {return;})
-app.route('*')
-  .all(dbConnect)
-  .get((req: Request, res: Response, next: NextFunction) => res.json({
+app.route('/favicon.ico').get(() => {return;})
+app.route('*').all(dbConnect).get((req, res) => res.json({
     message: "hey world! I'm Martin :)", 
     ...req.body
   }))
